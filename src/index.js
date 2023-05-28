@@ -35,6 +35,7 @@ const onSearch = async evt => {
   picturesService.searchQuery = value;
   loadMoreBtn.show();
   picturesService.resetPage();
+  totalImg = 0;
   clearPicturesList();
   await fetchHits();
   form.reset();

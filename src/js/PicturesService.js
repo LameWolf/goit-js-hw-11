@@ -10,11 +10,15 @@ export default class PicturesService {
   }
 
   async getData() {
-    const { data } = await axios.get(
-      `${URL}?key=${API_KEY}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=${this.per_page}`
-    );
-    this.incrementPage();
-    return data;
+    try {
+      const { data } = await axios.get(
+        `${URL}?key=${API_KEY}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=${this.per_page}`
+      );
+      this.incrementPage();
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   resetPage() {
